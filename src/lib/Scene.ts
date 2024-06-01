@@ -6,6 +6,9 @@ interface SceneConstructorParams {
   weakEdgeThreshold: number;
 }
 
+import fragment from '../shaders/fragment.glsl'
+import vertex from '../shaders/vertex.glsl'
+
 export default class Scene {
   private gl: WebGLRenderingContext;
   private vertexBuffer: WebGLBuffer;
@@ -31,8 +34,8 @@ export default class Scene {
 
     this.shader = new Shader({
       gl: this.gl,
-      fragmentShader: require('../shaders/fragment.glsl'),
-      vertexShader: require('../shaders/vertex.glsl'),
+      fragmentShader: fragment,
+      vertexShader: vertex,
       attributes: {
         aTextureCoord: {
           locationName: 'a_TextureCoord',
